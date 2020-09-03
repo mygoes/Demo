@@ -1,0 +1,73 @@
+body,
+h4 {
+    margin: 0px;
+    font-family: 'Microsoft Yahei';
+}
+
+.main_wrap {
+    width: 900px;
+    margin: 0 auto;
+}
+
+/* 
+    解决图片下面3像素的bug的方法，就是把图片转化成块
+*/
+.banner {
+    display: block;
+}
+
+.menu {
+    width: 900px;
+    height: 60px;
+    border-radius: 6px;
+    background-color: #d8eeec;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.main_wrap .menu button {
+    margin-left: 20px;
+}
+
+.mp10 {
+    margin-top: 10px;
+}
+
+.goods_pic {
+    width: 100%;
+}
+
+.goods_name {
+    font-size: 13px;
+    color: #000;
+}
+
+.price {
+    font-size: 13px;
+    color: #ff5eaf;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.price b {
+    font-size: 22px;
+    padding-left: 10px;
+}
+
+.total_price {
+    width: 900px;
+    line-height: 60px;
+    box-sizing: border-box;
+    border: 1px solid #ddd;
+    border-top: 0px;
+    text-align: right;
+    font-size: 13px;
+
+}
+
+.total_price b {
+    font-size: 22px;
+    color: #ff5eaf;
+    padding: 0 20px 0 10px;
+}
