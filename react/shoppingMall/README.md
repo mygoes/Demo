@@ -1,3 +1,5 @@
+此 demo 使用了 redux 完成商城购物车商品增加、删除以及价格的计算。
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
