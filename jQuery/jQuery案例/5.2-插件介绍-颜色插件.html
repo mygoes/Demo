@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      position: relative;
+      top: 0px;
+      left: 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="button" value="按钮" id="btn" /> <br /> <br />
+  <div></div>
+
+
+  <script src="jquery-1.12.4.js"></script>
+  <!-- 引入jQuery的颜色color插件 -->
+  <script src="./plugin/jquery.color.js"></script>
+  <script>
+    $(function () {
+      //需求:点击按钮让div做动画,我希望走着走着就绿了.
+      //animate()方法他无法修改背景色. 
+      //如果你非要让背景色做动画,那就要使用jQuery插件.
+      $('#btn').on('click',function(){
+        //给div做动画
+        $('div').animate({
+          width:100,
+          height:100,
+          left:600,
+          top:200,
+          backgroundColor:'green'
+        },2000);
+      })
+    });
+
+
+
+
+    //插件库:
+    //https://www.jq22.com/
+    //http://www.htmleaf.com/
+    
+
+
+
+  </script>
+</body>
+
+</html>

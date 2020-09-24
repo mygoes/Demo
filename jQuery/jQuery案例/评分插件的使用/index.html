@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/jsRapStar.css">
+
+</head>
+
+<body>
+    <div id="demo5" start="5"></div>
+
+    <script src="./js/jquery-1.11.0.min.js"></script>
+    <script src="./js/jsRapStar.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#demo5').jsRapStar({
+                star:'❥',
+                colorFront: '#0f0',
+                length: 10,
+                starHeight: 64,
+                step: false,
+                onClick: function (score) {
+                    $(this)[0].StarF.css({
+                        color: 'red'
+                    });
+                    console.log(score);
+                },
+                onMousemove: function (score) {
+                    $(this).attr('title', 'Ocena ' + score);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

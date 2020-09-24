@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    #div1 {
+      width: 300px;
+      height: 300px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="button" value="html()" id="btnHtml1" />
+  <input type="button" value="$()" id="btn1" /> <br /><br />
+
+  <div id="div1">
+    <p>p1
+      <span>span1</span>
+    </p>
+  </div>
+
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //回忆一下原生js中如何创建元素: document.write(); innerHTML; document.createElement();
+
+      //jQuery中如何创建元素: html();  $();
+
+      //1. html(); 获取和设置元素内容的. 
+      $('#btnHtml1').click(function(){
+        //1.1 获取元素内容   html()不给参数
+        //console.log($('#div1').html());
+
+        //1.2 设置元素内容   html(给参数);
+        //会覆盖原来的内容
+        //如果设置的内容中有标签,会被解析出来. 
+        $('#div1').html('我是设置的内容<a href="https://www.baidu.com">连接</a>');
+      });
+
+
+      //2.$();
+      //创建出来的元素只存在于内存中
+      //如果想要他在页面上显示,就要追加. 
+      $('#btn1').click(function(){
+          var $link = $('<a href="https://www.baidu.com"><b>连接</b></a>');
+          //把创建出来的元素追加到div中
+          $('#div1').append($link); //append是追加.
+          console.log($link);
+      });
+
+    });
+  </script>
+</body>
+
+</html>

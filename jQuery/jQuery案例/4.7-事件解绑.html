@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    .one {
+      width: 200px;
+      height: 200px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="button" value="注册事件" id="btn1" />
+  <input type="button" value="解绑事件" id="btn2" /> <br /><br />
+  <div class="one" id="one"></div>
+
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //回忆一下原生js中如何解绑事件:
+      // document.getElementById('btn1').onclick = function(){};
+      // document.getElementById('btn1').onclick = null;
+      // document.getElementById('btn1').addEventListener();
+      // document.getElementById('btn1').removeEventListener();
+      // document.getElementById('btn1').attachEvent();
+      // document.getElementById('btn1').detachEvent();
+
+      //jQuery中: 用on注册的 就用off解绑
+      // 解绑匹配元素的所有事件 $(selector).off();
+      // 解绑匹配元素的所有click事件 $(selector).off('click');
+
+      //点击按钮给div注册事件. 
+      $('#btn1').on('click', function () {
+        //简单注册
+        // $('div#one').on('click',function(){
+        //   console.log('单击了');
+        // })
+        // $('div#one').on('mouseenter',function(){
+        //   console.log('移入了');
+        // })
+
+
+        //委托注册
+        $('body').on('click','div',function(){
+          console.log('单击1');
+        })
+        $('body').on('mouseenter','div',function(){
+          console.log('移入1');
+        })
+      })
+
+      //点击按钮给div解绑事件.
+      $('#btn2').on('click', function () {
+        //$('#one').off('click');
+        // $('#one').off();
+
+        //$('body').off();
+        $('body').off('click');
+      })
+
+
+
+    });
+  </script>
+</body>
+
+</html>

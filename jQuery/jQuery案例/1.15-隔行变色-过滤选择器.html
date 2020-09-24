@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>我是第1个li标签</li>
+        <li>我是第2个li标签</li>
+        <li>我是第3个li标签</li>
+        <li>我是第4个li标签</li>
+        <li>我是第5个li标签</li>
+        <li>我是第6个li标签</li>
+        <li>我是第7个li标签</li>
+        <li>我是第8个li标签</li>
+        <li>我是第9个li标签</li>
+        <li>我是第10个li标签</li>
+    </ul>
+
+    <script src='./jquery-1.12.4.js'></script>
+    <script>
+        $(function () {
+            //奇数行
+            $('li:odd').css('backgroundColor', 'skyblue');
+            //偶数行
+            $('li:even').css('backgroundColor', 'pink');
+            //首尾两行绿色
+            $('li:eq(0),li:eq(9)').css('backgroundColor', 'green');
+
+
+            var bgColor = null;
+
+            //给每一个li设置鼠标移入事件
+            $('li').mouseover(function () {
+                //console.log(this);//当前鼠标移入的整个li标签,dom元素
+
+                //在鼠标移入当前这个标签中,在还没有改变颜色之前,把之前的颜色给保存起来
+                bgColor = $(this).css('backgroundColor');
+
+                $(this).css('backgroundColor','red');
+            })  
+
+            //给每一个li设置鼠标移出事件
+            $('li').mouseout(function(){
+                $(this).css('backgroundColor',bgColor);
+            });
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="get">获取value</button>
+    <button id="set">设置value</button>
+    <br>
+    <br>
+    <select name="" id="sel">
+        <option value="">苹果</option>
+        <option value="juzi">橘子</option>
+        <option value="香蕉1">香蕉</option>
+        <option>西瓜</option>
+    </select>
+
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        //获取
+        //下拉菜单的value值,是当前选中的option选项的value属性的值,
+        //如果当前选中的option选项没有value属性,那就取当前option选项的文本
+        $('#get').on('click',function(){
+            console.log($('#sel').val());
+        })
+
+
+        //设置
+        //就是选中value属性匹配的那个option项作为当前选中项. 
+        $('#set').on('click',function(){
+            $('#sel').val('juzi');
+        })
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+</head>
+
+<body>
+  <input type="button" value="按钮" id="btn" /> <br /><br />
+  <input type="text" id="txt" value="请输入222" />
+
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //回忆一下原生js中,如何操作表单元素的内容: value
+
+      //jQuery中, 使用val()来操作表单元素的内容. 
+      $('#btn').on('click',function(){
+        //val()不给参数就是获取. 
+        //console.log($('#txt').val());
+
+        //val()给参数就是设置
+        $('#txt').val('设置的内容');
+      })
+
+
+    });
+  </script>
+</body>
+
+</html>

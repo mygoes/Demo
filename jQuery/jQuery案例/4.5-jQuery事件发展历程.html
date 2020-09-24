@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      margin-top: 10px;
+    }
+
+    .one {
+      border: 1px solid red;
+    }
+
+    .two {
+      border: 1px solid green;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="button" value="按钮" id="btn" /> <br /><br />
+  <div class="one" id="one"></div>
+
+  <span>我是一个span,哈哈哈哈</span>
+  <p>我是一个p</p>
+
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //jQuery的注册事件和原生注册事件的异同点. 
+      // document.getElementById('btn').onclick = function(){
+      //   alert('哈哈');
+      // }
+      // document.getElementById('btn').onclick = function(){
+      //   alert('呵呵');
+      // }
+
+      // $('#btn').click(function(){
+      //   alert('哈哈');
+      // });
+      // $('#btn').click(function(){
+      //   alert('呵呵');
+      // });
+
+      //------------------------------------------------------
+      //点击按钮,生成一个div
+      $('#btn').on('click', function () {
+        //生成一个div,添加到body中
+        $('<div class="two"></div>').appendTo($('body'));
+      })
+      //-------------------------------------------------------
+      //jQuery随着版本的更新,注册事件的方式也不一样了. 
+      //1.简单注册
+      //不能同时注册多个
+      //不支持动态注册
+      // $('div').click(function(){
+      //   console.log('我是div,我被单击了');
+      // });
+      // $('div').mouseenter(function(){
+      //   console.log('鼠标移入了');
+      // });
+      // console.log('哈哈');
+
+
+      //2.bind()注册
+      //同时注册事件
+      //不支持动态注册
+      // $('div').bind('click mouseenter',function(){
+      //   console.log('1111');
+      // });
+      // $('div').bind({
+      //   click:function(){
+      //     console.log('点击了');
+      //   },
+      //   mouseenter:function(){
+      //     console.log('移入了');
+      //   }
+      // });
+
+
+      //3.委托注册
+      //支持同时注册
+      //支持动态注册
+      // $('body').delegate('div',{
+      //   click:function(){
+      //     console.log('单击');
+      //   },
+      //   mouseenter:function(){
+      //     console.log('移入');
+      //   }
+      // });
+      //委托事件注册的原理: 事件冒泡
+
+
+
+
+      //4.用on来注册
+      //jQuery1.7之后，jQuery用on统一了所有事件的处理方法。
+      //4.1 简单注册
+      //支持同时注册
+      //不支持动态注册
+      // $('div').on('click',function(){
+      //   console.log('单击了');
+      // })
+      // $('div').on({
+      //   click:function(){
+      //     console.log('单击');
+      //   },
+      //   mouseenter:function(){
+      //     console.log('移入了');
+      //   }
+      // });
+
+      //4.2 委托注册
+      //支持动态注册
+      $('body').on('click','div',function(e){
+        console.log('单击了');
+        console.log(this);//jQuery用on委托注册中this是事件源,是一个dom元素.  方便程序员. 
+      })
+
+
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    密码: <input type="text" id="pwd" value="请输入password">
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        //this.defaultValue 表示默认内容
+
+        //给密码输入框设置失去焦点事件
+        $('#pwd').on('blur',function(){
+            //判断内容是否为空,如果为空就还原
+            if($(this).val() == ""){
+                $(this).val(this.defaultValue);
+            }
+        });
+
+        //给密码输入框设置获取焦点事件
+        $('#pwd').on('focus',function(){
+            //判断内容是否为默认内容,如果是就为空
+            if($(this).val() == this.defaultValue){
+                $(this).val("");
+            }
+        });
+
+
+
+        //问题: 
+        //表单元素不仅仅只有文本输入框,还有比如下拉菜单,那下拉菜单的value值是什么?
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    a {
+      display: block;
+      width: 100px;
+      height: 100px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+  </div>
+
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //链式编程
+      //1. 什么时候可以使用链式编程?
+      //如果使用一个jQuery的方法,他返回一个jQuery对象,那这个时候就可以继续调用jQuery方法. 
+      // $('div').width(100).height(100).css('backgroundColor','red');
+
+      //2. 下面这句话有没有错.
+      // console.log($('div').width(100).width());//100
+      // $('div').width(100).width().height(100).css('backgroundColor','red');//会报错,因为100数值点不出height()
+
+
+      //3.有的时候我们调用一个jQuery方法返回的确实是一个jQuery对象,但是不是我们现在想要的这个jQuery对象. 
+      //console.log($(this).text(sx_wjx).prevAll().text(sx_wjx));//返回的当前鼠标移入的前面的所有元素
+      //$(this).text(sx_wjx).prevAll().text(sx_wjx).nextAll().text(kx_wjx);
+
+      //4.end(); // 筛选选择器会改变jQuery对象的DOM对象，想要回复到上一次的状态，并且返回匹配元素之前的状态。
+      //$(this).text(sx_wjx).prevAll().text(sx_wjx) .end()    .nextAll().text(kx_wjx);
+
+      //5.下面这句话会不会报错
+      //会报错,  end()是jQuery方法,要用jQuery对象点出来
+      //$('div').width(100).width().end().height(100).css('backgroundColor','red');
+
+    });
+  </script>
+</body>
+
+</html>

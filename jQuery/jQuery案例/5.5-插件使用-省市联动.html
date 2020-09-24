@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">点我获取值</button>
+  <br><br>
+  <div>
+    <select name="" id="sheng"></select>
+    <select name="" id="shi"></select>
+    <select name="" id="qu"></select>
+  </div>
+
+  <script src="./jquery-1.12.4.js"></script>
+  <script src="./plugin/distpicker.data.js"></script>
+  <script src="./plugin/distpicker.js"></script>
+
+  <script>
+    $('div').distpicker({
+      province: '广东省',
+      city: '深圳市',
+      district: '宝安区'
+    });
+
+    $('#btn').on('click', function () {
+      console.log($('#sheng').val());
+      console.log($('#shi').val());
+      console.log($('#qu').val());
+
+    })
+
+
+
+    //http://www.jq22.com/jquery-info8054
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body>
+  <input type="button" value="显示" id="show" />
+  <input type="button" value="隐藏" id="hide" />
+  <input type="button" value="切换" id="toggle" /> <br /><br />
+  <div id="div1"></div>
+
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //1.显示动画  show(参数1,参数2)
+      //参数1: 代表执行动画的时长,毫秒; 也可以给表示时间的单词('fast' 'normal' 'slow')
+      //参数2: 动画执行完毕后的回调函数
+      $('#show').click(function(){
+        //1.1 如果没有参数,是没有动画效果的
+        //$('#div1').show();
+
+        //1.2 如果希望有动画效果,就必须给参数. 
+        $('#div1').show(1000);
+        //$('#div1').show('penglin'); //fast: 200  normal: 400  slow: 600
+        //如果代表时长的单词写错了,他也不会报错,他会认为是一个normal. 
+
+        //1.3 回调函数在动画执行完毕后执行
+        // $('#div1').show(1000,function(){
+        //   alert('动画执行完毕了');
+        // });
+      });
+
+      //2.隐藏动画  
+      $('#hide').click(function(){
+        //$('#div1').hide();
+        $('#div1').hide(1000);
+        // $('#div1').hide(1000,function(){
+        //   alert('隐藏动画做完了');
+        // });
+      });
+
+
+      //3.切换  toggle
+      //如果元素现在是隐藏,切换那就是动画显示; 如果元素是显示,那切换就是动画隐藏. 
+      $('#toggle').click(function(){
+        $('#div1').toggle(1000);
+      });
+
+    });
+  </script>
+</body>
+
+</html>

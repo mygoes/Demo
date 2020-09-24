@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      width: 2000px;
+      height: 2000px;
+
+    }
+
+    .one {
+      width: 200px;
+      height: 200px;
+      border: 1px solid red;
+      /*margin-top: 10px;*/
+      position: relative;
+      top: 100px;
+      left: 100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="one" class="one">
+    <input type="button" value="我是按钮" id="btn" />
+    <br /><br />
+    <a href="https://www.baidu.com">百度一下，你就知道</a>
+  </div>
+
+
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //回忆一下原生js中的事件对象:
+      //事件触发的时候,都会有一个对象来记录这个触发时候的信息,比如有没有按住alt键,比如触发的坐标.... 
+      //用事件参数e来获取. 
+      // document.getElementById('one').onclick = function(e){
+      //   e = e || window.event;
+      //   console.log(e);
+      // }
+
+      //1.jQuery中也有事件对象,其实就是对原生js的事件对象做了一个封装,帮你处理好了兼容性. 
+      $('#one').on('click', function (e) {
+        //1.1 一样的是通过事件参数e来获取. 
+        //console.log(e);
+
+        //1.2  事件对象中常用的三个坐标,和原生一样
+        // console.log("screenX/screenY:", e.screenX, e.screenY);
+        // console.log("clientX/clientY:", e.clientX, e.clientY);
+        // console.log("pageX/pageY:", e.pageX, e.pageY);
+
+
+        //1.3 
+        alert('我是div,我被单击了');
+
+      })
+
+      //给盒子里面的按钮注册单击事件
+      // $('#btn').on('click',function(e){
+      //   //1.3 阻止事件冒泡
+      //   e.stopPropagation();
+      //   alert('我是按钮,我被单击了...');
+      // })
+
+
+      //给盒子里面的超链接注册单击事件
+      $('a').on('click',function(e){
+        // //1.3 阻止事件冒泡
+        // e.stopPropagation();
+        // //1.4 阻止默认行为
+        // e.preventDefault();
+
+        alert('我是超链接...');
+
+        //1.5 在jQuery中,return false;既能阻止默认行为,又能阻止事件冒泡;
+        return false;
+      })
+
+
+
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0
+            }
+        }
+
+        @-webkit-keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0
+            }
+        }
+
+        @-moz-keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: 0
+            }
+        }
+
+        .wrap {
+            width: 1000px;
+            text-align: center;
+            margin: 100px auto 0;
+        }
+
+        .wrap h1 {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: 300;
+        }
+
+        .word {
+            font-weight: 700;
+        }
+
+        .typed-cursor {
+            opacity: 1;
+            -webkit-animation: blink .7s infinite;
+            -moz-animation: blink .7s infinite;
+            animation: blink .7s infinite;
+            display: none;
+        }
+
+        .saySection {
+            margin-top: 50px;
+        }
+
+        .saySection input {
+            font-size: 30px;
+        }
+
+        .saySection .txtSay {
+            padding-left: 10px;
+        }
+
+        .saySection .btnSay {
+            display: inline-block;
+            padding: 0 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>
+            You want to say ：
+            <span class="word"></span>
+            <span class="typed-cursor">|</span>!
+        </h1>
+        <div class="saySection">
+            <input type="text" id="inValue" class="txtSay" />
+            <input type="button" value="Say" id="btnSay" class="btnSay" />
+        </div>
+    </div>
+
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //各个国家有各个国家的国歌
+            //需求: 点击say按钮,获取文本框中的文字,打字效果显示class为word的在span标签中
+            //需求: 页面一开始的时候也要实现一个打字效果: 红鲤鱼与绿鲤鱼与驴. 
+
+            //声明一个变量,用来记录计时器id
+            var timerId = null;
+            //在页面一开始的时候也要调用一下daZi函数
+            daZi('红鲤鱼与绿鲤鱼与驴');
+
+            //给say按钮设置一个点击事件. 
+            $('#btnSay').on('click', function () {
+                //获取用户输入的文本. 
+                var showTxt = $('#inValue').val().trim(); //'各个国家有各个国家的国歌'
+                //console.log(showTxt);
+                //显示class为word的在span标签中
+                //$('.word').text(showTxt);
+                //$('.word').text('各');
+                //$('.word').text('各个');
+                //$('.word').text('各个国');
+                //$('.word').text('各个国家');
+                //$('.word').text('各个国家有');
+                //$('.word').text('各个国家有各');
+                //我们发现间隔一段时间就要执行一下$('.word').text('')这个代码,所以我们想到了计时器. 
+
+                //调用我们封装的daZi这个函数来实现打字效果
+                daZi(showTxt);
+            });
+
+
+            //把打字效果的代码封装成一个函数. 
+            function daZi(showTxt) {
+                //清空一下计时器
+                clearInterval(timerId);
+
+                var str = "";
+                var index = 0;
+                timerId = setInterval(function () {
+                    if (showTxt[index] != undefined) {
+                        str += showTxt[index];
+                        $('.word').text(str);
+                        index++;
+                        //光标闪动
+                        $('.typed-cursor').show();
+                    } else {
+                        //清空计时器
+                        clearInterval(timerId);
+                        //光标隐藏
+                        $('.typed-cursor').hide();
+                    }
+
+
+                }, 500);
+            }
+
+
+
+
+            //-------------------------------
+            // var str = '各个国家有各个国家的国歌';
+            // console.log(str[0]);
+            // console.log(str[1]);
+            // console.log(str[12]);
+
+
+        });
+    </script>
+</body>
+
+</html>

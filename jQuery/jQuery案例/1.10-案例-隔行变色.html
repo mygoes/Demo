@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>我是第1个li标签</li>
+        <li>我是第2个li标签</li>
+        <li>我是第3个li标签</li>
+        <li>我是第4个li标签</li>
+        <li>我是第5个li标签</li>
+        <li>我是第6个li标签</li>
+        <li>我是第7个li标签</li>
+        <li>我是第8个li标签</li>
+        <li>我是第9个li标签</li>
+        <li>我是第10个li标签</li>
+    </ul>
+
+    <script src='./jquery-1.12.4.js'></script>
+    <script>
+        $(function () {
+            //1.获取到li标签们. 
+            var $lis = $('li'); //jQuery对象 
+
+            //2.遍历每一个li标签出来,设置颜色
+            for(var i = 0; i<$lis.length; i++){
+                //判断奇偶
+                if(i % 2 == 0){
+                    $lis[i].style.backgroundColor = 'skyblue'; //dom对象调用dom的属性
+                }else {
+                    $($lis[i]).css('backgroundColor','pink'); //jQuery对象调用jQuery的方法
+                }
+            }
+        });
+
+
+        
+    </script>
+
+
+
+
+
+
+
+</body>
+
+</html>

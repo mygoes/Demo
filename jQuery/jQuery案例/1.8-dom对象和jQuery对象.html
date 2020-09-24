@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .div1 {
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="div1" id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        //dom对象和jQuery对象
+        //1.dom对象
+        //原生js的选择器获取到的对象就是dom对象  document.getElementById();
+        //特点: 只能调用dom的属性/方法,不能调用jQuery的方法. 
+        //var div1 = document.getElementById('div1');//dom对象
+        //console.log(div1);
+        //div1.style.border = '1px solid red'; //dom对象调用dom的属性,ok的
+        //div1.css('border','1px solid green');//报错了 div1.css is not a function
+
+
+        //2.jQuery对象
+        //jQuery的选择器获取到的对象就是jQuery对象.  $('#id名'); $('标签名');
+        //只能调用jQuery的方法,不能调用原生js的属性/方法.
+        //var $div1 =  $('#div1'); //用来保存jQuery对象的变量名用$符号开头,这是行业规范. 
+        //console.log($div1);//jQuery.fn.init [div#div1.div1, context: document, selector: "#div1"]
+        //$div1.css('border','1px solid green');//jQuery对象调用jQuery的方法. 
+        //$div1.style.border = '1px solid red'; //报错了 Cannot set property 'border' of undefined
+
+
+        //3.仔细的看看jQuery对象
+        //jQuery对象是一个伪数组.
+        //他里面的元素存放的是一个个的dom对象,所以我们也说jQuery对象是dom对象的包装集. 
+        // var $div1 =  $('#div1');
+        // console.log($div1);
+        // console.log($div1.__proto__ === Array.prototype); //false
+
+        // var $divs = $('div');
+        // console.log($divs);
+
+
+
+        //------------------------------------------
+        //dom对象转成jQuery对象
+        //用钱$转
+        // var div1 = document.getElementById('div1'); //dom对象
+        // var $div1 = $(div1); //
+        // console.log($div1);//jQuery对象
+
+
+        //jQuery对象转成dom对象
+        //var $div1 = $('#div1'); //jQuery对象
+        //a.利用下标取出来. 
+        // var div1 = $div1[0];
+        // console.log(div1);
+
+        //b.使用jQuery对象的get()方法. 
+        // var div1 = $div1.get(0);
+        // console.log(div1);
+
+    </script>
+</body>
+
+</html>

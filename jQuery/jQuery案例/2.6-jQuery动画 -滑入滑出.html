@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    div {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+<input type="button" value="滑入" id="slideDown"/>
+<input type="button" value="滑出" id="slideUp"/>
+<input type="button" value="切换" id="slideToggle"/><br/><br/>
+<div id="div1"></div>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    //1.滑入  slideDown(参数1,参数2);
+    //参数1: 动画执行的时长
+    //参数2: 动画执行完毕后的回调函数
+    $('#slideDown').click(function(){
+      //1.1 如果不给参数,那也有动画效果,相当于给了一个normal的时长.
+      //$('#div1').slideDown();
+
+      //1.2 
+      $('#div1').slideDown(1000);
+
+      //1.3 
+      // $('#div1').slideDown(1000,function(){
+      //   alert('动画做完了');
+      // });
+
+    });
+
+    //2.滑出  slideUp(参数1,参数2);
+    //参数1:动画时长
+    //参数2:回调函数
+    $('#slideUp').click(function(){
+      $('#div1').slideUp(1000);
+    });
+
+    //3.切换  slideToggle();
+    $('#slideToggle').click(function(){
+      $('#div1').slideToggle(1000);
+    });
+
+  });
+</script>
+</body>
+</html>
+

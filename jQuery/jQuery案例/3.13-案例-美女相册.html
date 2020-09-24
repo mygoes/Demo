@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <style type="text/css">
+        body {
+            font-family: "Helvetica", "Arial", serif;
+            color: #333;
+            background-color: #ccc;
+            margin: 1em 10%;
+        }
+
+        h1 {
+            color: #333;
+            background-color: transparent;
+        }
+
+        a {
+            color: #c60;
+            background-color: transparent;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        ul {
+            padding: 0;
+        }
+
+        li {
+            float: left;
+            padding: 1em;
+            list-style: none;
+        }
+
+        #imagegallery {
+
+            list-style: none;
+        }
+
+        #imagegallery li {
+            margin: 0px 20px 20px 0px;
+            padding: 0px;
+            display: inline;
+        }
+
+        #imagegallery li a img {
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        美女画廊
+    </h2>
+
+    <ul id="imagegallery">
+        <li>
+            <a href="images/meinv/1.jpg" title="美女A">
+                <img src="images/meinv/1-small.jpg" width="100" alt="美女1" />
+            </a>
+        </li>
+        <li>
+            <a href="images/meinv/2.jpg" title="美女B">
+                <img src="images/meinv/2-small.jpg" width="100" alt="美女2" />
+            </a>
+        </li>
+        <li>
+            <a href="images/meinv/3.jpg" title="美女C">
+                <img src="images/meinv/3-small.jpg" width="100" alt="美女3" />
+            </a>
+        </li>
+        <li>
+            <a href="images/meinv/4.jpg" title="美女D">
+                <img src="images/meinv/4-small.jpg" width="100" alt="美女4" />
+            </a>
+        </li>
+    </ul>
+    <div style="clear:both"></div>
+    <img id="image" src="images/meinv/placeholder.png" alt="" width="450px" />
+    <p id="des">选择一个图片</p>
+
+    <script src="jquery-1.12.4.js"></script>
+    <script>
+        $(function () {
+            //1.需求
+            //给图片a 标签设置一个单击事件. 让img修改src为大图的路径, 让p标签的文本设置为对应的文字.
+
+            //思考题:
+            //给小图片注册单击事件,那这个单击事件是注册在包裹小图片的a上,还是li上?
+            //结论:给a设置,因为a标签中有href属性,他的值就是大图片的路径; 还有title属性,他的值就是显示文本.
+
+            
+            //给小图片a标签注册单击事件
+            $('#imagegallery>li>a').on('click',function(e){
+                e.preventDefault();//阻止a标签的默认跳转行为.
+
+                //获取当前点击的a标签的href值,赋值给id为image的img的src属性
+                $('#image').attr('src', $(this).attr('href')  );
+                //获取当前点击的a标签的title属性值,交给id为des的p标签的文本
+                $('#des').text( $(this).attr('title') );
+            })
+
+        });
+    </script>
+</body>
+
+</html>

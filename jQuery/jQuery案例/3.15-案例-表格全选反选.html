@@ -1,0 +1,154 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .wrap {
+            width: 300px;
+            margin: 100px auto 0;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            border: 1px solid #c0c0c0;
+        }
+
+        th,
+        td {
+            border: 1px solid #d0d0d0;
+            color: #404060;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #09c;
+            font: bold 16px "微软雅黑";
+            color: #fff;
+        }
+
+        td {
+            font: 14px "微软雅黑";
+        }
+
+        tbody tr {
+            background-color: #f0f0f0;
+        }
+
+        tbody tr:hover {
+            cursor: pointer;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrap">
+        <button id="btn">反选</button><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        <input type="checkbox" id="j_cbAll" />
+                    </th>
+                    <th>课程名称</th>
+                    <th>所属学院</th>
+                </tr>
+            </thead>
+            <tbody id="j_tb">
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>JavaScript</td>
+                    <td>前端与移动开发学院</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>css</td>
+                    <td>前端与移动开发学院</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>html</td>
+                    <td>前端与移动开发学院</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="checkbox" />
+                    </td>
+                    <td>jQuery</td>
+                    <td>前端与移动开发学院</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div id="one"></div>
+</body>
+<script src="jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+        //需求1:上面的多选框选中,下面的多选框们跟着选中,上面的多选框没有选中,下面的多选框们跟着不选中.
+        //需求2:下面的多选框们,都有单击事件: 如果下面的多选框们都选中了,那么上面的那个多选框跟着选中,如果下面多选框有一个没有选中,那么上面的多选框就不选中.
+
+
+        //需求1:
+        $('#j_cbAll').on('click', function () {
+            //获取当前这个多选框的checked值
+            var checkedValue = $(this).prop('checked');
+            console.log(checkedValue);
+            //让下面那四个多选框的checked值等于checkedValue
+            $('#j_tb [type="checkbox"]').prop('checked', checkedValue);
+        });
+
+        //需求2:
+        $('#j_tb [type="checkbox"]').on('click', function () {
+            //判断下面那4个多选框是否都选中. 
+            //求2个数: 一个是下面多选框的总个数, 一个是下面多选框选中的总个数. 
+            var allNum = $('#j_tb [type="checkbox"]').length;
+            var selNum = $('#j_tb [type="checkbox"]:checked').length;
+            console.log(selNum, allNum);
+
+            //如果都选中设置上面那个多选框的checked值为true,否则就为false.
+            // if(allNum == selNum){
+            //     $('#j_cbAll').prop('checked',true); 
+            // }else {
+            //     $('#j_cbAll').prop('checked',false); 
+            // }
+
+            //上面这个if-else结构可以简写:
+            $('#j_cbAll').prop('checked', allNum == selNum);
+
+        });
+
+        //给反选按钮设置一个点击事件
+        $('#btn').on('click',function(){
+            $('#j_tb [type="checkbox"]').each(function(index,ele){
+                //获取多选框自己的checked值,然后取反再赋值给自己的checked属性. 
+                $(this).prop('checked', !$(this).prop('checked'));
+            });
+
+
+
+            var allNum = $('#j_tb [type="checkbox"]').length;
+            var selNum = $('#j_tb [type="checkbox"]:checked').length;
+            $('#j_cbAll').prop('checked', allNum == selNum);
+        })
+
+    });
+</script>
+
+</html>

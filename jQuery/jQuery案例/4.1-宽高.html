@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title>标题</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .one {
+      width: 200px;
+      border: 10px solid red;
+      padding: 20px;
+      margin: 30px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <input type="button" value="按钮" id="btn" />
+  <div id="one" class="one" style="height: 200px;"></div>
+</body>
+
+</html>
+
+<script src="jquery-1.12.4.js"></script>
+<script>
+  $(function () {
+    //给按钮设置点击事件
+    $('#btn').on('click', function () {
+      //需求: 获取div的宽高.
+      //1.css(); 获取样式
+      // console.log($('#one').css('width')); //'200px'
+      // console.log($('#one').css('height'));//'200px'
+
+      //2.获取宽高只需要数值,不要带px. 
+      // console.log($('#one').width()); //200
+      // console.log($('#one').height()); //200
+
+      //可以设置
+      // $('#one').width(300);
+      // $('#one').height(300);
+      
+
+      //3.innerWidth(); innerHeight();
+      //方法返回元素的宽度/高度（包括内边距）。
+      // console.log($('#one').innerWidth()); //240
+      // console.log($('#one').innerHeight()); //240
+
+      // $('#one').innerWidth(300);
+      // $('#one').innerHeight(300);
+
+
+      //4. outerWidth(); outerHeight();
+      //方法返回元素的宽度/高度（包括内边距和边框）。
+      // console.log($('#one').outerWidth()); //260
+      // console.log($('#one').outerHeight()); //260
+
+      //5. outerWidth(true); outerHeight(true);
+      //方法返回元素的宽度/高度（包括内边距和边框和外边距）。
+      // console.log($('#one').outerWidth(true)); //
+      // console.log($('#one').outerHeight(true)); //
+      // $('#one').outerWidth(350);
+      // $('#one').outerHeight(true)
+
+
+      //-----------------------------------------------
+      //6. 页面可视区宽高
+      // 获取可视区宽度  $(window).width();
+      // 获取可视区高度 $(window).height();
+
+      // console.log($(window).width());
+      // console.log($(window).height());
+      
+    })
+
+  });
+</script>

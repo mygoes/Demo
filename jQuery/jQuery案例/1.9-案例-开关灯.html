@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        img {
+            display: block;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+
+<body>
+    <button>开灯</button>
+    <button>关灯</button>
+    <img src="images/coder.jpg" />
+
+    <script src="./jquery-1.12.4.js"></script>
+    <script>
+        //入口函数
+        $(function(){
+            //1.获取按钮们
+            var $btns = $('button');//jQuery对象
+
+            //2.关灯
+            $btns[1].onclick = function(){
+                document.body.style.backgroundColor = 'black';
+            }
+
+            //3.开灯
+            $($btns[0]).click(function(){  //jQuery对象注册单击事件
+                $('body').css('backgroundColor','white');
+            });
+
+        });
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+ 
+  <script src="./sb.js"></script>
+  <script src="./jquery-1.12.4.js"></script>
+  <script src="./jquery-3.0.0.js"></script>
+
+  
+  <script>
+    //多库共存.
+    //1.我们如何查看引入的jQuery文件的版本? 
+    //名字有可能会改,所以看名字不靠谱
+    //所以我们通过查看jQuery的原型中的jquery属性来查看. 
+    // console.log(jQuery.fn.jquery);
+    // console.log(jQuery.prototype.jquery);
+    // console.log($.fn.jquery);
+    // console.log($.prototype.jquery);
+
+
+    //2.如果我们这个项目中引入了多个jQuery文件, 那这个$是属于哪个jQuery版本的呢?
+    //是属于后引入的这个jQuery版本的, 因为后引入的会把前面引入的给覆盖. 
+    //console.log($.prototype.jquery);
+
+
+    //3. 我们如果项目中引入了多个jQuery版本,那$符号是属于后引入的这个jQuery的,
+    //那此时我们想要使用前面引入的那个jQuery版本里面的内容,怎么办?
+    // //多库共存. 
+    // var _$ = $.noConflict();//这句话的意思是,拥有$控制权的jQuery版本把这个$的控制权给释放了. 
+    // console.log($.prototype.jquery);
+    // console.log(jQuery.prototype.jquery);
+    // console.log(_$.prototype.jquery);
+
+    // (function($){
+    //   //那在这里就可以继续的愉快的使用$. 
+    //   console.log($.prototype.jquery);
+    // }(_$));
+
+
+    //4.如果引入了多个库
+    // var _$300 = $.noConflict();  
+    // var _$1124 = $.noConflict();
+
+    // console.log($);
+    // console.log(_$300.fn.jquery);
+    // console.log(_$1124.fn.jquery);
+
+
+  </script>
+
+
+
+</body>
+
+</html>

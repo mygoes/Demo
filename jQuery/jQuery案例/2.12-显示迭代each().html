@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>复制</title>
+  <style>
+    ul {
+      list-style: none;
+    }
+
+    li {
+      float: left;
+      width: 200px;
+      height: 200px;
+      background: pink;
+      text-align: center;
+      line-height: 200px;
+      margin: 0 20px 20px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="ulList">
+    <li>什么都看不见</li>
+    <li>什么都看不见</li>
+    <li>什么都看不见</li>
+    <li>什么都看不见</li>
+    <li>什么都看不见</li>
+    <li>什么都看不见</li>
+    <li>什么都看不见</li>
+    <li>什么都看不见</li>
+    <li>什么都看不见</li>
+    <li>什么都看不见</li>
+  </ul>
+
+  <script src="jquery-1.12.4.js"></script>
+  <script>
+    $(function () {
+      //each()方法,作用:就是用来遍历jQuery对象的. 
+
+
+      //需求:找到所有的li标签,分别设置透明度,透明度递增到1. 
+      var $lis = $('#ulList>li');
+
+      //1.隐式迭代,每一个li标签都会设置透明度,只不过值是一样的.  
+      //$lis.css('opacity',0.5);
+
+      //2.遍历出每一个li标签,分别设置透明度,值不一样. 
+      // for(var i = 0; i< $lis.length;i++){
+      //   $lis[i].style.opacity = (i+1)/10;
+      // }
+
+      //3.each()
+      $lis.each(function(index,ele){
+        //console.log(index,ele); //index是遍历出来的索引, ele是变出来的元素
+        $(ele).css('opacity',(index+1)/10);
+      });
+     
+
+
+    });
+  </script>
+</body>
+
+</html>
